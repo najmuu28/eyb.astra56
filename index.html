@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Yearbook Astranoviera</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   DESIGN
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* GOLD */
+:root {
+    --gold: #d4af37;
+    --blue: #075b9c;
+    --black: #050505;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+
+    background: rgba(5,5,5,0.75);
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 22px;
+    letter-spacing: 4px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    height: 100vh;
+    min-height: 650px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    /* =================================================
+       ✏️ GANTI FOTO BACKGROUND DI SINI
+       Contoh: url("foto/background.jpg")
+    ================================================= */
+    background-image: url("foto/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Fade hitam di atas foto supaya teks tetap jelas */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.55) 35%,
+        rgba(0,0,0,0.72) 70%,
+        rgba(0,0,0,0.98) 100%
+    );
+
+    z-index: 1;
+}
+
+/* Sedikit efek biru dan emas */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 80% 20%,
+        rgba(7,91,156,0.18),
+        transparent 35%),
+        radial-gradient(circle at 150% 15 0%,
+        rgba(212,175,55,0.08),
+        transparent 45%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.small-title {
+    color: var(--gold);
+    letter-spacing: 7px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(55px, 10vw, 130px);
+    letter-spacing: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #8f7424,
+        #fff2a6,
+        #d4af37
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    margin-top: 20px;
+    color: #aaa;
+    letter-spacing: 4px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 40px;
+
+    padding: 15px 35px;
+
+    border: 1px solid var(--gold);
+    color: var(--gold);
+
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: var(--gold);
+    color: black;
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+section {
+    padding: 120px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title span {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+
+    font-family: 'Cinzel', serif;
+    font-size: 25px;
+    letter-spacing: 4px;
+}
+
+/* =====================================================
+   MEMBER SECTION
+===================================================== */
+
+.section-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.section-card {
+    min-height: 200px;
+
+    padding: 30px;
+
+    border: 1px solid rgba(212,175,55,0.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.04),
+            rgba(255,255,255,0.01)
+        );
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+.section-card:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 15px 50px rgba(212,175,55,0.15);
+}
+
+.section-number {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.section-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.section-card p {
+    color: #777;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+/* =====================================================
+   MEMBER POPUP
+===================================================== */
+
+.member-directory {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(7,91,156,0.12),
+            transparent 35%
+        ),
+        #050505;
+
+    z-index: 2000;
+
+    display: none;
+
+    overflow-y: auto;
+
+    padding: 100px 7%;
+}
+
+.close-button {
+    position: fixed;
+
+    right: 35px;
+    top: 25px;
+
+    font-size: 30px;
+
+    color: var(--gold);
+
+    cursor: pointer;
+
+    z-index: 2100;
+}
+
+.directory-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.directory-header span {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.directory-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 45px;
+    margin-top: 10px;
+}
+
+/* GROUP PHOTOS */
+
+.group-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-bottom: 65px;
+}
+
+.group-photo {
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(212,175,55,0.20);
+    background: #0b0b0b;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+}
+
+.group-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.6s;
+}
+
+.group-photo:hover img {
+    transform: scale(1.05);
+}
+
+/* Foto grup terakhir di setiap section dibuat berada di tengah */
+.group-photo-grid .group-photo:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 11px);
+    justify-self: center;
+}
+
+/* FOTO GRUP UTAMA KELAS DI BAWAH SEMUA MEMBER */
+.class-group-photo {
+    margin-top: 60px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(212,175,55,0.25);
+    background: #0b0b0b;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.30);
+}
+
+.class-group-photo img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: 0.6s;
+}
+
+.class-group-photo:hover img {
+    transform: scale(1.02);
+}
+
+.class-group-label {
+    padding: 18px 15px;
+    text-align: center;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    border-top: 1px solid rgba(212,175,55,0.15);
+}
+
+@media (max-width: 900px) {
+    .group-photo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MEMBER GRID */
+
+.member-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 20px;
+}
+
+.member-card {
+    background: #0b0b0b;
+
+    border: 1px solid rgba(212,175,55,0.15);
+
+    overflow: hidden;
+
+    transition: 0.4s;
+}
+
+.member-card:hover {
+    transform: translateY(-6px);
+
+    border-color: var(--gold);
+}
+
+.member-card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.member-info {
+    padding: 18px;
+}
+
+.member-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+}
+
+.member-info p {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 6px;
+}
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.gallery-item {
+    overflow: hidden;
+
+    border: 1px solid rgba(212,175,55,0.15);
+    background: rgba(5, 5, 5, 0.52);
+    backdrop-filter: blur(7px);
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+
+    object-fit: cover;
+    display: block;
+
+    transition: 0.6s;
+}
+
+.gallery-name {
+    padding: 12px 10px 14px;
+    text-align: center;
+    color: #ddd;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: #0b0b0b;
+    border-top: 1px solid rgba(212,175,55,0.12);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Kotak foto Eskul terakhir dibuat berada di tengah */
+.gallery-grid .gallery-item:last-child {
+    grid-column: 1 / -1;
+    width: calc(33.333% - 10px);
+    justify-self: center;
+}
+
+/* FOTO PENGURUS SEBELUM QUOTE */
+.management-photo-box{width:100%;max-width:1100px;margin:0 auto 70px;overflow:hidden;border:1px solid rgba(212,175,55,0.25);background:#0b0b0b;box-shadow:0 15px 45px rgba(0,0,0,0.30);position:relative}.management-photo-box img{width:100%;aspect-ratio:16/7;height:auto;object-fit:cover;display:block;transition:.6s}.management-photo-box:hover img{transform:scale(1.02)}.management-photo-label{padding:16px 15px;text-align:center;color:var(--gold);font-family:'Cinzel',serif;font-size:14px;letter-spacing:3px;border-top:1px solid rgba(212,175,55,0.15);background:rgba(5,5,5,.65)}@media(max-width:700px){.management-photo-box{margin-bottom:50px}.management-photo-box img{aspect-ratio:16/9}}
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote {
+    text-align: center;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.quote p {
+    font-family: 'Cinzel', serif;
+
+    font-size: 30px;
+
+    line-height: 1.6;
+
+    color: #ddd;
+}
+
+.quote span {
+    display: block;
+
+    margin-top: 25px;
+
+    color: var(--gold);
+
+    letter-spacing: 3px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    text-align: center;
+
+    padding: 60px 20px;
+
+    border-top:
+        1px solid rgba(212,175,55,0.15);
+}
+
+footer h2 {
+    font-family: 'Cinzel', serif;
+
+    color: var(--gold);
+
+    letter-spacing: 5px;
+}
+
+footer p {
+    margin-top: 15px;
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   SEAMLESS GOLD + BLUE BACKGROUND
+   THE CLASS → GALLERY → QUOTE → FOOTER
+===================================================== */
+
+/* Satu background menyatu untuk seluruh halaman */
+body {
+    background:
+        radial-gradient(
+            ellipse 70% 35% at 8% 28%,
+            rgba(212, 175, 55, 0.15),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 65% 40% at 92% 48%,
+            rgba(7, 91, 156, 0.18),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 70% 35% at 25% 78%,
+            rgba(7, 91, 156, 0.12),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 60% 35% at 78% 90%,
+            rgba(212, 175, 55, 0.11),
+            transparent 70%
+        ),
+        linear-gradient(
+            135deg,
+            #050505 0%,
+            #08090b 30%,
+            #071019 55%,
+            #090908 78%,
+            #050505 100%
+        );
+    background-attachment: fixed;
+    background-size: 140% 140%;
+}
+
+/* Bagian The Class sampai bawah dibuat transparan
+   agar background body terlihat sebagai satu bidang */
+#members,
+#gallery,
+#quote,
+footer {
+    position: relative;
+    background: transparent;
+}
+
+/* Hilangkan lapisan background lama yang membuat potongan */
+#members::before,
+#members::after,
+#gallery::before,
+#gallery::after,
+#quote::before,
+#quote::after {
+    display: none;
+}
+
+/* Kartu tetap memiliki permukaan gelap agar teks jelas */
+.section-card,
+.gallery-item {
+    background: rgba(5, 5, 5, 0.52);
+    backdrop-filter: blur(7px);
+}
+
+/* Garis pemisah dibuat sangat halus */
+#gallery,
+#quote,
+footer {
+    border-top-color: rgba(212, 175, 55, 0.08);
+}
+
+/* =====================================================
+   AKSEN CAHAYA DI JUDUL SECTION
+===================================================== */
+
+.section-title h2 {
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.12),
+        0 0 40px rgba(7, 91, 156, 0.08);
+}
+
+.section-title h2 {
+    text-shadow:
+        0 0 20px rgba(212, 175, 55, 0.12),
+        0 0 40px rgba(7, 91, 156, 0.08);
+}
+
+
+/* =====================================================
+   LEADERSHIP
+===================================================== */
+
+#leadership {
+    position: relative;
+    background: transparent;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+/* Kepala sekolah dibuat sebagai blok tersendiri */
+.principal-wrap {
+    max-width: 420px;
+    margin: 0 auto 65px;
+}
+
+.principal-wrap .leader-card {
+    width: 100%;
+}
+
+.other-leaders-title {
+    text-align: center;
+    margin: 0 0 28px;
+}
+
+.other-leaders-title span {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.leadership-grid {
+    max-width: 700px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    align-items: stretch;
+}
+
+.leader-card {
+    background: rgba(5, 5, 5, 0.48);
+    border: 1px solid rgba(212, 175, 55, 0.20);
+    backdrop-filter: blur(7px);
+
+    overflow: hidden;
+    transition: 0.4s;
+
+    text-align: center;
+}
+
+.leader-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(212, 175, 55, 0.65);
+
+    box-shadow:
+        0 18px 55px rgba(7, 91, 156, 0.12),
+        0 8px 35px rgba(212, 175, 55, 0.10);
+}
+
+.leader-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #080808;
+}
+
+.leader-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition: 0.6s;
+}
+
+.leader-card:hover .leader-photo img {
+    transform: scale(1.04);
+}
+
+.leader-info {
+    padding: 22px 15px 25px;
+}
+
+.leader-info span {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.leader-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    margin-top: 9px;
+    color: #eee;
+}
+
+/* =====================================================
+   LEADERSHIP MOBILE
+===================================================== */
+
+@media(max-width: 700px) {
+
+    .principal-wrap {
+        max-width: 420px;
+        margin-bottom: 50px;
+    }
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width: 1000px) {
+
+    .section-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .member-grid {
+        grid-template-columns:
+            repeat(4, 1fr);
+    }
+}
+
+@media(max-width: 700px) {
+
+    nav {
+        padding: 20px;
+    }
+
+    nav div:last-child {
+        display: none;
+    }
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .section-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .member-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .group-photo-grid .group-photo:last-child,
+    .gallery-grid .gallery-item:last-child {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .hero h1 {
+        letter-spacing: 5px;
+    }
+
+    .directory-header h2 {
+        font-size: 32px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav>
+
+    <div class="logo">
+        YEARBOOK
+    </div>
+
+    <div>
+        <a href="#leadership">LEADERS</a>
+        <a href="#members">MEMBERS</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#quote">QUOTE</a>
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+     
+     ✏️ EDIT TEKS DI SINI
+===================================================== -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            ASTRANOVIERA
+        </div>
+
+        <h1><img src="logo56.png" style="width: auto; height: 250px;"></h1>
+
+        <p>
+            BINTANG BARU YANG BERSINAR DI ANTARA KEGELAPAN
+        </p>
+
+        <a href="#leadership" class="button">
+            OPEN YEARBOOK
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     OUR MEMBERS
+===================================================== -->
+
+
+<!-- =====================================================
+     LEADERSHIP
+     ✏️ GANTI FOTO:
+     foto/pimpinan/kepala-sekolah.jpg
+     foto/pimpinan/ketua.jpg
+     foto/pimpinan/wakil-ketua.jpg
+===================================================== -->
+
+<section id="leadership">
+
+    <div class="section-title">
+        <span>LEADERSHIP</span>
+        <h2>OUR LEADERS</h2>
+    </div>
+
+    <!-- KEPALA SEKOLAH — DIBUAT SENDIRI -->
+    <div class="principal-wrap">
+
+        <div class="leader-card">
+            <div class="leader-photo">
+                <img src="foto/pimpinan/kepala-sekolah.jpg"
+                     alt="Kepala Sekolah">
+            </div>
+
+            <div class="leader-info">
+                <span>KEPALA SEKOLAH</span>
+                <h3>Dr. H. ARMAWI CHARLI S. Pd., M.Pd.I.</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PEMIMPIN LAINNYA -->
+    <div class="other-leaders-title">
+        <span>STUDENT LEADERS</span>
+    </div>
+
+    <div class="leadership-grid">
+
+        <div class="leader-card">
+            <div class="leader-photo">
+                <img src="foto/pimpinan/ketua.jpg"
+                     alt="Ketua">
+            </div>
+
+            <div class="leader-info">
+                <span>KETUA ANGKATAN</span>
+                <h3>NONA HALIMAH J. H</h3>
+            </div>
+        </div>
+
+        <div class="leader-card">
+            <div class="leader-photo">
+                <img src="foto/pimpinan/wakil-ketua.jpg"
+                     alt="Wakil Ketua">
+            </div>
+
+            <div class="leader-info">
+                <span>WAKIL KETUA ANGKATAN</span>
+                <h3>SYAROFUL ANAM ADDAFFA</h3>
+            </div>
+        </div>
+
+        <div class="leader-card">
+            <div class="leader-photo">
+                <img src="foto/pimpinan/ketua-osis.jpg"
+                     alt="Ketua OSIS">
+            </div>
+
+            <div class="leader-info">
+                <span>KETUA OSIS</span>
+                <h3>ALI ABDUL MOHSEN</h3>
+            </div>
+        </div>
+
+        <div class="leader-card">
+            <div class="leader-photo">
+                <img src="foto/pimpinan/ketua-mpk.jpg"
+                     alt="Ketua MPK">
+            </div>
+
+            <div class="leader-info">
+                <span>KETUA MPK</span>
+                <h3>MAY FITRI LESTARI</h3>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="members">
+
+    <div class="section-title">
+
+        <span>
+            OUR MEMBERS
+        </span>
+
+        <h2>
+            THE CLASS
+        </h2>
+
+    </div>
+
+
+    <div class="section-grid" id="sectionGrid">
+
+        <!--
+        Section akan dibuat otomatis
+        berdasarkan DATA di bawah.
+        -->
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMBER DIRECTORY
+===================================================== -->
+
+<div class="member-directory" id="memberDirectory">
+
+    <div
+        class="close-button"
+        onclick="closeSection()"
+    >
+        ×
+    </div>
+
+
+    <div class="directory-header">
+
+        <span>
+            OUR MEMBERS
+        </span>
+
+        <h2 id="directoryTitle">
+            SECTION
+        </h2>
+
+    </div>
+
+
+    <div class="group-photo-grid" id="groupPhotoGrid"></div>
+
+
+    <div
+        class="member-grid"
+        id="memberGrid"
+    ></div>
+
+    <!-- FOTO GRUP UTAMA KELAS — ISI DENGAN FOTO SEISI KELAS -->
+    <div class="class-group-photo" id="classGroupPhoto">
+        <img
+            src=""
+            alt="Foto Seisi Kelas"
+            id="classGroupPhotoImage"
+            onerror="this.parentElement.style.display='none'"
+        >
+        <div class="class-group-label">FOTO SEISI KELAS</div>
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section id="gallery">
+
+    <div class="section-title">
+
+        <span>
+            MEMORIES
+        </span>
+
+        <h2>
+            ORGANISASI & EKSTRAKURIKULER
+        </h2>
+
+    </div>
+
+
+    <div class="gallery-grid" id="mainGalleryGrid">
+
+        <!-- Gallery 01-16 dibuat otomatis dari DATA GALLERY di bawah -->
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUOTE
+     
+     ✏️ EDIT DI SINI
+===================================================== -->
+
+<!-- FOTO PENGURUS — ganti foto di src -->
+<div class="management-photo-box">
+    <img src="foto/pimpinan/pengurus.jpg" alt="Foto Pengurus" onerror="this.parentElement.style.display='none'">
+    <div class="management-photo-label">PENGURUS</div>
+</div>
+
+<section id="quote">
+
+    <div class="quote">
+
+        <p>
+            "Some moments become memories,
+            some memories become stories."
+        </p>
+
+        <span>
+            — ASTRANOVIERA 2026
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+     
+     ✏️ EDIT DI SINI
+===================================================== -->
+
+<footer>
+
+    <h2>
+        YEARBOOK ASTRANOVIERA 2026
+    </h2>
+
+    <p>
+        Made with memories • By @annajmu28
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   ✏️ DATA YEARBOOK — EDIT BAGIAN INI SAJA
+   ===================================================== */
+
+/* 1. NAMA KELAS + NAMA 40 ANGGOTA */
+const classes = [
+    {
+        name: "AKL 1",
+        members: [
+            "AFIFAH KALUNAFIYAH",
+            "ANGGUN TIARA PUTRI",
+            "AURELYA POETRI NOVAISYAH",
+            "BUNGA SALSABILAH",
+            "CHILA FRISHELA",
+            "DANI MEILANDRI T.",
+            "DEVITA",
+            "DEWI FITRIA NURAENI",
+            "DINI ASTUTI",
+            "DINA YULIANI",
+            "ELIANA SIFANIE PUTRI",
+            "FALAH FATHUR RAHMAN",
+            "FITRI AGUSTIN",
+            "FRISYI INDRI ASTRILIANI",
+            "GILANG RAMADHAN",
+            "GITA RAHAYU",
+            "ICA INDRIANI",
+            "ISTINGANAH",
+            "KEYSHA NENI WIHARNO",
+            "LULU AGUSTIN",
+            "MAULYDIA AZZAHRA",
+            "NALA KADITA PUTERI",
+            "NAYLA VANISHA",
+            "NUR NISA HANIFAH",
+            "NURJANAH OKTA VIANI",
+            "NURWATI RAMADHANI",
+            "PUTRI NANDA LESTARI",
+            "RINA WIJAYANTI",
+            "RIZKIA YULI YANTI",
+            "SENNY TIYAS JULIYANTI",
+            "SITI HABIBAH",
+            "SRI WULAN DARI",
+            "UGI PURWANDI",
+            "ZIHAN FAUZIAH",
+        ]
+    },
+    {
+        name: "AKL 2",
+        members: [
+            "AISYAH ALFIYANI",
+            "ANANDA ARISKA",
+            "ANNISA NAZWA PERMANA",
+            "AZAHRA FEBRIANI",
+            "CACA",
+            "DEDE FRISKA",
+            "DINTA JULIYANA DETRI",
+            "ELSYA SAH PUTRI",
+            "ENGGAR FATHUROZI",
+            "FATIYAH URARDIYAH",
+            "FAYUMI AYUNING",
+            "FEI FEI",
+            "FERDINAN OKI PRATAMA",
+            "FRISYA INDRI ASTRILIANI",
+            "INDAH NURHASANAH",
+            "JESIKA FEBRIANTI",
+            "LENI",
+            "LIZKA AURELLYA FEBRIANIS",
+            "MUHAMMAD FEBRI JAMALUDIN",
+            "MUSTAJAB AR RIZKY",
+            "NADIA PUAN MAHARANI",
+            "NURMALA",
+            "NUR WULAN SAFITRI",
+            "OLIVIA DAMAYANTI",
+            "PUTRI OKTAVIANI",
+            "RAISYA SASQIYATUSSITA",
+            "RHISMA CHELSEA OLIVIA",
+            "RIFA AGUSTIN",
+            "RINA MARLINA",
+            "RINKA HANANI",
+            "SANDRA LESTARI",
+            "SINDI IMAS AJI SAPUTRI",
+            "SITI NUR HADIJAH",
+            "SYIFA NURJANAH",
+            "TEGAR HADI GUMILAR",
+            "ZANUBA NURUL NADIFA"
+        ]
+    },
+    {
+        name: "AKL 3",
+        members: [
+            "ADELIA RAMADHANI",
+            "ADELIA",
+            "AENI AGUSTIN",
+            "AMANDA SYAFA AZZAHRA",
+            "AMELIA UTAMI",
+            "ANDHARA PRASETYAWANTI",
+            "ASTRIT SEPTIA MOSA",
+            "AZAHRA NURUL HAKIMAH",
+            "BUDHIARTI UTAMI",
+            "CASYAH",
+            "DAFFA DANENDRA",
+            "DENI SATRIO",
+            "DEWI NATASYA",
+            "FATIMAH AZ-ZAHRA CINTA PUTRI",
+            "LISDA APRILIA",
+            "LUTHFI NANDI PRATAMA",
+            "MUHAMMAD RADHIT RIFAI",
+            "MAHA NUR LAELINDA",
+            "MAULIDDIN NUR CAHYANTO",
+            "MOCH. ALIF RAMADHAN",
+            "MOZZA AYUNDAH CHAROLINE",
+            "NABILAH CHAERUNNISA",
+            "NAZWA NATANIA SETIA BUDI",
+            "NURFAIZATUL MALA",
+            "RAISSA ALFATIHANIA",
+            "RASYA RAMADHANI",
+            "RESHMA NURJANNAH",
+            "RESTI ADINDA NINGSIH",
+            "RIVA DELPHINA",
+            "SITI JULAEHA",
+            "TANTRI LOVINA",
+            "TIARA AYUNDA",
+            "WAFA ABRILIYA",
+            "WENI ANDRAYANI",
+            "YOLDA FAUZIAH",
+            "ZAHRA TUSSTITA SRI NURHAYATI"
+        ]
+    },
+    {
+        name: "MPLB 1",
+        members: [
+            "ALINE ADYA CALISTA",
+            "ANASTASYA KARTIKA TRIHESA",
+            "ANES AULIA",
+            "ANIS TIANASARI",
+            "ASYIFA NUR MAWADAH",
+            "CARTINIH",
+            "DIAN NOPIANA",
+            "DIANA PUTRI",
+            "DWI PASA BILBANA",
+            "ERA ROSANA",
+            "ERLYN WIDIYA WATI",
+            "FAIZA MEYLAN CAHYANI",
+            "FIRA PUTRIA",
+            "GITA IRTANTI",
+            "IMAM FAKHRUDDIN AR ROZI",
+            "MALA ELIN PUSPITA",
+            "MAY FITRI LESTARI",
+            "MOUZA DWI ANDINI",
+            "MUHAMAD RIZKY FADHILAH",
+            "MUHAMMAD AKBAR YUSUF",
+            "NABILA CAHYA ANGGRAENI",
+            "NABILA GHINA IHSANI",
+            "NURUL HUDA",
+            "REFAN ANUGRAH",
+            "REHA JUWIYANTI",
+            "RIO",
+            "SAFITRY",
+            "SALSABILLAH DWI MARISA",
+            "SANTIKA",
+            "SRINESHA AYU ANASTASIA",
+            "STIVIA LELLY HERIANTO",
+            "TRI WIDIYASTUTI",
+            "ULAN THALYTA ZYKRA",
+            "WAHIDAH",
+            "WULAN RAMADHANI",
+        ]
+    },
+    {
+        name: "MPLB 2",
+        members: [
+            "ADE MUTIAH",
+            "AFIFAH KHOERUN AMALIA",
+            "AHLAM PUTRI AULIYA",
+            "CARSIH",
+            "CITRA FATIHA",
+            "DEA ANISA NURPUJI",
+            "DEANI KEYLA",
+            "DHITA TIARA",
+            "DIAN AYU NOVITA",
+            "DIVA ELVARETA",
+            "FANESA IKA AULIA",
+            "FAUJIAH",
+            "INDAH LESTARI",
+            "INDAH NAESATONE",
+            "IRMA FITRIYANI",
+            "JESIKA KRISTIANA",
+            "LENA DWI RAHAYU",
+            "M. ADITYANSYAH. H",
+            "M. LUCKY FATHUL ARIFIN",
+            "MONICA TRY LESTARY",
+            "MOZA LAILA TRISTANTI",
+            "NAURAH ZAHRA SALSABILA",
+            "NAUVAL SHALAHUDIN",
+            "NURSAKHI ZENDAUL HAQ",
+            "RESTU MAULANA ISHAQ",
+            "RIYAN AYU RAHMAWATY",
+            "RIZKY MULYANA",
+            "SALMA SINTIANA",
+            "SYARIFATUL 'AZIZAH",
+            "SYAROFUL ANAM ADDAFFA",
+            "WELI PUSPITA MEDIANA",
+            "WIDA FATMAWATI",
+            "YUANITA",
+            "ZELIKA EVA ARNELITA",
+            "NABILAH MAYLAN NURHAYADI"
+        ]
+    },
+    {
+        name: "MPLB 3",
+        members: [
+            "ALUNA",
+            "ANANDA NOVIANA FUTRI",
+            "ANGGI MUTIARA",
+            "ANISA RAHMA SARI",
+            "AYUNING SRI RAHAYU",
+            "AZIFAH RIHADATUL AISY",
+            "CALLYSTA ELYSIA FEDORA",
+            "CAYLA DISTY ATHLAFUNISA",
+            "DEVI APRIYANTI",
+            "DEWI LESTARI",
+            "DINI FEBRI PATRIA",
+            "ERFAN RAMADAN",
+            "FITRI RAHMADANI",
+            "HANIF DIANDRA FAIQAH",
+            "HAYA HALIMAH",
+            "KAKA AFRIAN ADITYA",
+            "KARTIKA SARI",
+            "KEVIN MAULANA",
+            "M.ANDIKA",
+            "MUHAMAD FAREL JANUAR",
+            "MUHAMMAD FAHRURRIJAL",
+            "NAURA SALSABILA",
+            "NIDA KHOERUNISA",
+            "PUTRI",
+            "PUTRI NATASYA",
+            "RIFKI ABDULAH",
+            "SALSA MULIANI",
+            "SITI NUR AISYAH",
+            "SYIFA ADINDA FEBRIANA",
+            "SYUROTUL HASANAH",
+            "TUTI MUTIANI",
+            "VERDIYANSYAH",
+            "YENI AQILAH",
+            "ZAHWA ALIFAH",
+            "ZIDANE MAULANA AINUDIN",
+        ]
+    },
+    {
+        name: "DKV 1",
+        members: [
+            "AHMAD FADILAH SYAHID",
+            "ANJUN AYU LESTARI",
+            "AZAHRA IKA AGUSTIN",
+            "DAVID AUREL MAZZARA",
+            "DELA RAMADHANI",
+            "IQBAAL UMARUDIN",
+            "IQBAL TRYBUWANA",
+            "IRENE AGNI PRATISTA",
+            "JUWITA RATNASARI",
+            "KHUSNUL KHOTIMAH",
+            "MAURENT HILAL DEVYAN",
+            "MOHAMAD RIFAI",
+            "MUHAMAD RASYAH IZAT PRATAMA",
+            "MUHAMMAD FAZRIN KURNIAWAN",
+            "MUSTOFA AL AMIN",
+            "NUR ASTUTI",
+            "NURUL ARRAAFI ROHMAN",
+            "PIYANISKA",
+            "RACHEL SRI JULIANTI",
+            "RAHMA SARI",
+            "REIHAN ARASHI",
+            "REXCHA LIVIANA",
+            "RIFQI MAULANA JAUHARI",
+            "RINZIANI ADHA ANDINI",
+            "RISKY TRISFALIANTO",
+            "RISTIANA",
+            "SATRIA RAMADHAN",
+            "SHELLA ANGELICA PUTRI",
+            "SHOPIE ALVIANTI",
+            "SYAHRUL NUR FAHRI",
+            "TEUKU FIRMANSYAH",
+            "VELIN AULIA",
+            "WAHYUDIN",
+            "WANDIKA",
+            "WIDHI SANTOSO",
+            "WISNU NATHAN EVANDA",
+        ]
+    },
+    {
+        name: "DKV 2",
+        members: [
+            "ADLY FADIL ANWAR",
+            "AHMAD EMBUN FAZZRY",
+            "AISA",
+            "ANGGREK SRI DEWI",
+            "DIAN SAHIDAH",
+            "DINI RAMADHANI",
+            "DUWIKI REZA",
+            "HARLAN RANGGA FABRADI",
+            "ILHAM FAUZI",
+            "JANUAR SANDY PRATAMA",
+            "JEFRI MAULANA",
+            "KOMARIYAH",
+            "MAULIDYA ZAINI",
+            "MEILITA ARYATI",
+            "MOCH.MAHMUD KHAIRUDIN",
+            "MOHAMAD FAHLIL FAIZASYAH",
+            "MOHAMAD FEBRIANSYAH DEVADI PUTRA",
+            "MUHAMAD REZEKI ARISTIAWAN",
+            "MUHAMMAD ALWI HILAL",
+            "MUHAMMAD REZA PAHLEFI",
+            "MUHAMMAD SABDA WIGUNA",
+            "NAZWA AULIA",
+            "NISA AROFAH",
+            "NONA HALIMAH J.H.K",
+            "NOPANDI SAPUTRA",
+            "NOROL HIKMA",
+            "NUR HIDAYAH",
+            "OLGA SAPUTRA",
+            "PRIMA ANANSYAH",
+            "PUTRA ADETIYAH",
+            "PUTRA DWI ARDIANSYAH",
+            "RAKA ADITYA",
+            "RANI ANDRIANI",
+            "SITI AZIZAH",
+            "TYAS SYAFA NURALIFAH",
+        ]
+    },
+    {
+        name: "DKV 3",
+        members: [
+            "ADITYA NANDA",
+            "ADITYA PAHLEVI",
+            "AHMAD RIFAI",
+            "ALDI RAFLI MAULANA",
+            "AMEISYA PUTRI",
+            "ANDRAI IRAWAN",
+            "ANISA NOVITA",
+            "ANNAJMU TSAQIEB",
+            "ANNIS NAZIRA",
+            "ARIS MUNANDAR",
+            "ARYAKA ELGAN PUTRA",
+            "BAYU ANJAS SAPUTRA",
+            "DEVIYAH FEBRIAN",
+            "FAIZ FAARI",
+            "FIONA ROSA",
+            "HARFRIAN ALVAZ",
+            "KHALID MAULANA",
+            "KIRANIA NOLIANDRA SULHA",
+            "MUHAMAD SARIP MULYANA",
+            "MUHAMMAD AHDA SABILA",
+            "MUHAMMAD IBNU HISYAM",
+            "MUHAMMAD JAVIER ANGGARA",
+            "MUHAMMAD RIFQI HIDAYAT",
+            "MUHAMMAD ZAIDAN PRASETYO",
+            "SEKAR AINUNISA ARIFIN",
+            "SYIFA NURMALA",
+            "WANDIKI",
+            "WENDI PRABU MARETNO",
+            "WILDA SAFIRA",
+            "WINA TAHNIATUN",
+            "WINDI MEIYANI",
+            "YANE MAHARANI",
+            "ZAHRA KAERUNNISA",
+            "ZIKRIYAN"
+        ]
+    },
+    {
+        name: "PH 1",
+        members: [
+            "ADE RIYANA",
+            "ALIN ZESTY S.",
+            "AZIZAH FEBRIANTI",
+            "AZIZAH",
+            "BELLA SILVIYANA",
+            "CAHYA ISA PRATAMA",
+            "DEDE RISMANTO",
+            "DEFRI HADI",
+            "DIMAS TEGUH P.",
+            "JIMMY NUR KHOLIS",
+            "KEYSHABILLA P.",
+            "KUSNUL NASUHA",
+            "MEGA AULIYA",
+            "MONITA FUJIYANTI",
+            "NADIA MEI PUTRI",
+            "NAYLA NATHANIA R.",
+            "NESYA LESTARI",
+            "NIKEN ADELIAN",
+            "NUR FITRI",
+            "NURUL MAULIDA",
+            "PUPUT NOVITA",
+            "RAFI ACHMAD S.",
+            "REIHAN MAULANA",
+            "RESTU HARIYADI",
+            "REVA MARISKA",
+            "REVINA PEBRI M.",
+            "SAKINAH",
+            "SANTI",
+            "SEKHA ALIFIYANI",
+            "SOFI NABILLAH",
+            "TANIA RAMADHANI",
+            "TIKA ANJANI",
+            "WINDI NURAFNI",
+            "YUSUF GIO TAULANI",
+            "ZIAD ADITYA",
+        ]
+    },
+    {
+        name: "PH 2",
+        members: [
+            "ADNAN FIRDAUS",
+            "AZAH OVIFAH",
+            "AZRYL SYEFRILY JULYANTO",
+            "DINI AMINARTI",
+            "ENTRIN",
+            "FAHRI PRATAMA",
+            "FATHURROHMAN AL BUQORI",
+            "FRASETIO RAMADHAN",
+            "GITA APRILIA",
+            "HANIKHA NOVA PITALOKA",
+            "HANUM KIRANI",
+            "IBNU FARHAN",
+            "KAMEISHA RAYA SALSABILAH",
+            "KEVIN DWIPUTRA JATMIKO",
+            "KRISTINA DWI AMELIA",
+            "MOH. RIZKY BAHARUDIN",
+            "MUHAMAD ABDURROHMAN ZAELANI",
+            "MUHAMMAD ALKALA RIZQI TIANDRA",
+            "NAZWA MUTIARA MYLAN",
+            "NOVITASARI",
+            "NURHAYATI",
+            "PUTRI SITI AISYAH",
+            "RANIA SARAH APRILIANA",
+            "RENA MIDIA SISKA",
+            "SELLA KRISTINA",
+            "SISILIA",
+            "SITI NUR ZAHIRA.",
+            "SRI LUPITASARI",
+            "TATI SULASTRI",
+            "TIKA WINDIYANAH",
+            "VINA KURNIA SARI",
+            "VIRA ANANDI PELISA",
+            "WISNU",
+            "ZAKIE TAUFIQUR RAHMAN",
+            "ZILLA APRILLIA"
+        ]
+    },
+    {
+        name: "PH 3",
+        members: [
+            "ADITYA WARDANA",
+            "AISYAH LIANA PUTRI",
+            "ALDIAN NUR FAISAL",
+            "BAYU AJI",
+            "DANAR WULAN",
+            "DAVINA VIOLA IKKA PUTRI",
+            "DAYANTI",
+            "DESITA RIZQIA SALMA.",
+            "DEVIN FAREL YANUAR",
+            "D'FAHRI AZHI JAEDAN",
+            "DHEA PUSPITA",
+            "EVAN DERIAS SAPUTRA",
+            "EVY PURNAMA RIYANI",
+            "FARHAN ARISKI",
+            "FIKA RAHMATIKA",
+            "IRFAN MUALIF",
+            "ISMAYA FEBRIANTIN",
+            "KAROMAH MENTARI RANSI",
+            "MAWAR SETIAWATI.",
+            "MILA",
+            "MONIKA",
+            "PANDU PANGESTU",
+            "PRADITYA",
+            "PUTRI ANISA",
+            "RIDHO ICHI",
+            "RIJALUSSYAFI PRAYITNO",
+            "ROBBI ATUL ADAWIYAH",
+            "SATRIA PANDU WIJAYA.",
+            "SATRIO PUTRA DEWA",
+            "SRI LEANI",
+            "THOMAS HERLAMBANG",
+            "WIDIYA WULANDARI",
+            "YUDI ARDIANSYAH SUPRIYATNA"
+        ]
+    },
+    {
+        name: "AM 1",
+        members: [
+            "ABDUL FADILA",
+            "AISYAH RENATA S",
+            "AMIER HAMZAH M",
+            "BADI' ADHARAYA A.",
+            "BAYU REKSA DANA",
+            "CICI INDRIANI",
+            "FIFAN ADAITAMA S",
+            "FINA FAUZIYAH",
+            "FINO WILIASANDI.",
+            "INTAN RAHMADHAN A",
+            "JEZHISCA ALITH",
+            "JIHAN UMMY HANI",
+            "KHOIRUNNISA RAFEN",
+            "LAILA SALSA BILLAH",
+            "M. BHARELVY S.",
+            "MAULANA MUHAMMAD Y",
+            "MOHAMMAD FAHRI IRAWAN",
+            "MUARI FIQQRI M",
+            "MUHAMMAD WAHYUDIN.",
+            "MUSLIMAH",
+            "MUTIARA RIFA DWI A",
+            "NUR ARIF HIDAYAT",
+            "QUWWINA AZALIA RIZKY",
+            "RAFI YUSRI ZAKI",
+            "REIHAN ADI K",
+            "ROY YALIH",
+            "SENDI SUPRIYADI",
+            "SESA LIANA.",
+            "SIERYL ZANNATA H",
+            "SOFYAN SYAHURI",
+            "SULTHAN NATHA S",
+            "TAUFIK HERMAWAN",
+            "TAUFIK MAULANA R",
+            "WAHYU ADI PRATAMA"
+        ]
+    },
+    {
+        name: "AM 2",
+        members: [
+            "AFNAN JULIANTI",
+            "AKHDAN SYARIF",
+            "ALFIAN NURUL ALIM",
+            "BILQIS PUTRA A",
+            "DHEARUNA KHAERUNISA",
+            "DHIKA DWI ALFIANSYAH",
+            "DONI ANGGARA",
+            "EKA LAILUSSYIFA AZZAHRA",
+            "FANNY TRI RAHMAWATI",
+            "FEBY AULUNA PUTRI",
+            "GIGIS BAHTIAR",
+            "HALIM RAFIU",
+            "HAMIZUL FUAD",
+            "HIPAJAR YUDIYONO",
+            "KHOFIFAH OCTAVIANI",
+            "LAKEISYAH ALDIANO",
+            "MAULANA MALIK IBRAHIM",
+            "MUHAMMAD IKBAL",
+            "MUHAMMAD QODRI",
+            "MUHAMMAD RAFI ISHAQ",
+            "NABIL SYAFA FADHILAH",
+            "NISAH AULIA",
+            "NURTI WIKA",
+            "PRIMA ANANDIN",
+            "RIRIN MAULINA A",
+            "RIZKA AYU VERLINAH",
+            "RIZQI MAULANA",
+            "ROPAN AZIZ",
+            "SALSABILA",
+            "SESAR SISWONO",
+            "SUGINA MADANI",
+            "TEDI FIRMANSYAH",
+        ]
+    },
+    {
+        name: "KL 1",
+        members: [
+            "AGISKA TIARAYA",
+            "ALPIYAH BT S",
+            "ARUNNIE ZULAYKA V",
+            "AYU MUNIAH",
+            "AYU SAFITRI",
+            "DEWI PUTRI A",
+            "DIAH AYU FAJRIYATI N",
+            "DWI AYU ASTUTI",
+            "EGA RELITA",
+            "HABIEBATURROHMAN NURUL M.",
+            "IKA ANANTA",
+            "ILONA ZALVA F",
+            "INDAH NOVI YANTI",
+            "INTAN CISELA ",
+            "M. MUALIF FIRMANSYAH",
+            "M. PRADIPTA BAGASKARA",
+            "MARIATUS SOLEHA",
+            "MELIA ANDREA S",
+            "MUAYAH",
+            "NADIYA TRI O",
+            "NUR AMANAH A",
+            "NUR' AZIZAH HIBAH R",
+            "RANI",
+            "REXSA ALAMSYAH",
+            "RIFERA BUNGA A",
+            "RIMA RAMADANI",
+            "SELLA ARIANTI",
+            "SHAILA NURHASANAH",
+            "SRI ISNAENI",
+            "SRI LADY M",
+            "SUCI FEBRIYANI",
+            "SYAFIRA AL FARIHA",
+            "TIA DESTIANA",
+            "VIRGINA SARAH A",
+            "WINDARIH"
+        ]
+    },
+    {
+        name: "KL 2",
+        members: [
+            "AMELIA",
+            "ANINDA WILLAS PUTRIANTY",
+            "ANNETASYA ZAHROTUSSYTA",
+            "ANYA AL WAFA",
+            "AZKYA HUSNA RAMADHANI",
+            "CHE BILKIS MAHARAYA",
+            "CHINTYA SHANI THUSSAHDYA",
+            "DHEALOVA ZAZKIA A.",
+            "DITA AL FARAH",
+            "DIYA FITRI WATA",
+            "DWI SYALWA LARASATI",
+            "ELINE OKTOVIYAH",
+            "HANIFA SITI AZZAHRA",
+            "HUZAIMAH",
+            "KHANZA ZAHIRA SAFA",
+            "LUZAINATUL MUNAWAROH",
+            "MOHAMAD ARDINANSYAH",
+            "MONICA TYARANI",
+            "NAZMA JULIANDANI",
+            "NUR ANNISA TUSOLI",
+            "NURAZIZAH",
+            "QUMI RAUDHATUL JANNAH",
+            "RAIHAN JULIANSYAH",
+            "RHIETA FAUZIYAH AHMAD",
+            "SAETI",
+            "SAHLA FIRDAUS",
+            "SALWA AZ-ZAHRA",
+            "SARI SITI SELSA",
+            "SERLI JULIYA DINI",
+            "SILVIA RAMADHANI",
+            "SRI DEWANTI SONIYAH",
+            "WUNINGSIH",
+            "ZALFA NABILA"
+        ]
+    }
+];
+
+/* 2. NAMA YANG MUNCUL DI GALLERY */
+const galleryNames = [
+    "OSIS", "MPK", "TARUBARA", "PRAMUKA",
+    "PMR", "IRMA", "BASKET", "FUTSAL",
+    "VOLI", "MERPATI PUTIH", "TARI", "MODERN DANCE",
+    "MARCHING BAND"
+];
+
+/* 3. FOTO:
+   Foto anggota otomatis:
+   foto/section1/01.jpg sampai 40.jpg
+
+   Foto grup otomatis:
+   foto/section1/grup/01.jpg sampai 05.jpg
+
+   Foto seisi kelas (di bawah member):
+   foto/section1/grup/kelas.jpg
+
+   Gallery otomatis:
+   gallery/01.jpg sampai 16.jpg
+*/
+
+const sections = classes.map((kelas) => ({
+    name: kelas.name,
+    members: kelas.members.map((name, i) => [
+        name,
+        `${String(i + 1).padStart(2, "0")}.jpg`
+    ]),
+    groupPhotos: Array.from({length: 5}, (_, i) =>
+        `${String(i + 1).padStart(2, "0")}.jpg`
+    )
+}));
+
+/* =====================================================
+   MEMBUAT 16 SECTION
+===================================================== */
+
+const sectionGrid =
+    document.getElementById("sectionGrid");
+
+
+sections.forEach((section, index) => {
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "section-card";
+
+    card.onclick = function() {
+        openSection(index);
+    };
+
+    card.innerHTML = `
+
+        <div class="section-number">
+            SECTION ${String(index + 1).padStart(2,"0")}
+        </div>
+
+        <h3>
+            ${section.name}
+        </h3>
+
+        <p>
+            ${section.members.length} MEMBERS
+        </p>
+
+    `;
+
+    sectionGrid.appendChild(card);
+
+});
+
+
+/* =====================================================
+   BUKA SECTION
+===================================================== */
+
+function openSection(index) {
+
+    const section =
+        sections[index];
+
+    const directory =
+        document.getElementById(
+            "memberDirectory"
+        );
+
+    const title =
+        document.getElementById(
+            "directoryTitle"
+        );
+
+    const grid =
+        document.getElementById(
+            "memberGrid"
+        );
+
+    const groupGrid =
+        document.getElementById(
+            "groupPhotoGrid"
+        );
+
+    const classGroupPhoto =
+        document.getElementById("classGroupPhotoImage");
+
+
+    title.textContent =
+        section.name;
+
+    groupGrid.innerHTML = "";
+    grid.innerHTML = "";
+
+    classGroupPhoto.parentElement.style.display = "block";
+    classGroupPhoto.src =
+        `foto/section${index + 1}/grup/kelas.jpg`;
+
+
+    section.groupPhotos.forEach((photo) => {
+
+        const photoBox = document.createElement("div");
+
+        photoBox.className = "group-photo";
+
+        photoBox.innerHTML = `
+            <img
+                src="foto/section${index + 1}/grup/${photo}"
+                alt="Foto Grup ${section.name}"
+                onerror="this.style.display='none'"
+            >
+        `;
+
+        groupGrid.appendChild(photoBox);
+
+    });
+
+
+    section.members.forEach(
+        (member, i) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "member-card";
+
+
+            card.innerHTML = `
+
+                <img
+                    src="foto/section${index + 1}/${member[1]}"
+                    onerror="
+                        this.style.display='none'
+                    "
+                >
+
+                <div class="member-info">
+
+                    <h3>
+                        ${member[0]}
+                    </h3>
+
+                    <p>
+                        MEMBER ${String(i + 1).padStart(2,"0")}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        }
+    );
+
+
+    directory.style.display =
+        "block";
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =====================================================
+   MEMBUAT 16 FOTO GALLERY
+===================================================== */
+
+const mainGalleryGrid =
+    document.getElementById("mainGalleryGrid");
+
+galleryNames.forEach((name, index) => {
+
+    const item = document.createElement("div");
+
+    item.className = "gallery-item";
+
+    const number = String(index + 1).padStart(2, "0");
+
+    item.innerHTML = `
+        <img
+            src="gallery/${number}.jpg"
+            alt="${name}"
+        >
+        <div class="gallery-name">${name}</div>
+    `;
+
+    mainGalleryGrid.appendChild(item);
+
+});
+
+
+/* =====================================================
+   TUTUP SECTION
+===================================================== */
+
+function closeSection() {
+
+    document.getElementById(
+        "memberDirectory"
+    ).style.display = "none";
+
+    document.body.style.overflow =
+        "auto";
+
+}
+
+
+/* =====================================================
+   ESCAPE UNTUK MENUTUP
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeSection();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
